@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,4 +22,9 @@ public class Ingredient {
     String unit;
     @Column(name = "ExpiryDate")
     LocalDate date;
+
+    //Product relation
+    @ManyToMany()
+    @JoinTable(name = "ProductIngredient", joinColumns = @JoinColumn(name = "IngredientID",nullable = false),inverseJoinColumns = @JoinColumn(name = "ProductID",nullable = false))
+    List<Product> productList;
 }

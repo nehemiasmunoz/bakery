@@ -3,6 +3,8 @@ package entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table
@@ -21,4 +23,8 @@ public class Customer {
     String address;
     @Column(name = "PhoneNumber")
     String phoneNumber;
+
+    //Order relation
+    @OneToMany(mappedBy = "customer")
+    List<Customer> customerList;
 }
